@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sample App</title>
+  </head>
+  <body>
+    <h1>Caller Service</h1>
+    <table>
+      <thead>
+        <th>Key</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Server</th>  <td th:text="${aggregator.hostname}">server name</td>
+        </tr>
+        <tr>
+          <th>Version</th> <td th:text="${aggregator.version}">server version</td>
+        </tr>
+        <tr>
+          <th>Time</th>    <td th:text="${aggregator.time}">epoch time</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Callee Service</h1>
+    <table>
+      <thead>
+        <th>Key</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Server</th>  <td th:text="${feed.hostname}">server name</td>
+        </tr>
+        <tr>
+          <th>Version</th> <td th:text="${feed.version}">server version</td>
+        </tr>
+        <tr>
+          <th>Time</th>    <td th:text="${feed.time}">epoch time</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
