@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aggregator
+  namespace: web
+  labels:
+    app: aggregator
+spec:
+  selector:
+    matchLabels:
+      app: aggregator
+  template:
+    metadata:
+      labels:
+        app: aggregator
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "aggregator"
+        dapr.io/app-port: "8080"
+    spec:
+      containers:
+      - name: aggregator
+        image: hitoshiresearch.azurecr.io/dapr-sample/aggregator:0.0.1-SNAPSHOT
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: TIMEFEED_HOST
+          value: http://localhost:3500
+        - name: TIMEFEED_BASE
+          value: /v1.0/invoke/timefeed/method/
+        - name: SPRING_MAIN_BANNER-MODE
+          value: "off"
