@@ -18,6 +18,10 @@ spec:
         dapr.io/app-id: "aggregator"
         dapr.io/app-port: "8080"
         dapr.io/config: "appconfig"
+        dapr.io/log-as-json: "true"
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/"
     spec:
       containers:
       - name: aggregator
