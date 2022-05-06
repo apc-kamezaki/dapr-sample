@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-consumer
+  namespace: event
+  labels:
+    app: event-consumer
+spec:
+  selector:
+    matchLabels:
+      app: event-consumer
+  template:
+    metadata:
+      labels:
+        app: event-consumer
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "event-consumer"
+        dapr.io/app-port: "3000"
+        dapr.io/config: "appconfig"
+        dapr.io/log-as-json: "true"
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/"
+    spec:
+      containers:
+      - name: event-consumer
+        image: ${ACR_NAME}.azurecr.io/dapr-sample/event-consumer:1.1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: APPLICATIONINSIGHTS_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: instrumentation-string
+              key: instrumentationString

@@ -1,0 +1,14 @@
+SUBSCRIPTION_ID="Azure Subscription ID"
+
+export RESOURCE_GROUP="Target resource group"
+export CLUSTER_NAME="AKS Cluster name"
+export ACR_NAME="ACR name"
+export AZURE_SERVICEBUS_NAMESPACE="Azure Service Bus namespace"
+export AI_INSTRUMENTATION_KEY="Application Insights Instrumentation Key"
+export AI_INSTRUMENTATION_STRING="Application Insights Connection String"
+
+export DOMAIN_NAME="Your domain name"
+
+az account set --subscription $SUBSCRIPTION_ID
+
+az aks get-credentials --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME

@@ -6,3 +6,12 @@ metadata:
 type: Opaque
 data:
   instrumentationString: ${BASE64_INSTRUMENTATION_STRING}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: instrumentation-string
+  namespace: event
+type: Opaque
+data:
+  instrumentationString: ${BASE64_INSTRUMENTATION_STRING}

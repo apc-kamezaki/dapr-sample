@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: aggregator
-        image: ${ACR_NAME}.azurecr.io/dapr-sample/aggregator:0.0.1-SNAPSHOT
+        image: ${ACR_NAME}.azurecr.io/dapr-sample/aggregator:0.1.0-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -40,6 +40,10 @@ spec:
           value: http://localhost:3500
         - name: TIMEFEED_BASE
           value: /v1.0/invoke/timefeed/method/
+        - name: ORDER_TOPIC_HOST
+          value: http://localhost:3500
+        - name: ORDER_TOPIC_BASE
+          value: /v1.0/publish/sample-pubsub/orders
         - name: SPRING_MAIN_BANNER-MODE
           value: "off"
         - name: APPLICATIONINSIGHTS_ROLE_NAME

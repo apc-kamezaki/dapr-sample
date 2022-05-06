@@ -1,4 +1,4 @@
-package ap.apcom.samples.dapr.aggregator;
+package ap.apcom.samples.dapr.aggregator.invokers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

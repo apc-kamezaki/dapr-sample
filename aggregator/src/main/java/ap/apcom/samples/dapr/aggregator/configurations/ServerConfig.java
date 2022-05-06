@@ -1,4 +1,4 @@
-package ap.apcom.samples.dapr.aggregator;
+package ap.apcom.samples.dapr.aggregator.configurations;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

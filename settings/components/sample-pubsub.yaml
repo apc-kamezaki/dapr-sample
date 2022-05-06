@@ -1,0 +1,31 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-pubsub
+  namespace: event
+spec:
+  type: pubsub.azure.servicebus
+  version: v1
+  metadata:
+  - name: namespaceName
+    value: "${AZURE_SERVICEBUS_NAMESPACE}"
+  - name: azureClientId
+    value: "${PRINCIPAL_APPLICATION_ID}"
+scopes:
+- event-consumer
+---
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-pubsub
+  namespace: web
+spec:
+  type: pubsub.azure.servicebus
+  version: v1
+  metadata:
+  - name: namespaceName
+    value: "${AZURE_SERVICEBUS_NAMESPACE}"
+  - name: azureClientId
+    value: "${PRINCIPAL_APPLICATION_ID}"
+scopes:
+- aggregator

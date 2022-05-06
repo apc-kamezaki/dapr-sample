@@ -1,4 +1,4 @@
-package ap.apcom.samples.dapr.aggregator;
+package ap.apcom.samples.dapr.aggregator.invokers;
 
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import ap.apcom.samples.dapr.aggregator.configurations.BackendConfig;
+import ap.apcom.samples.dapr.aggregator.configurations.ServerConfig;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -19,7 +21,7 @@ public class TimeFeedService {
     private final ServerConfig serverConfig;
     private final BackendConfig backendConfig;
     private final BuildProperties properties;
-    private final @Qualifier("timefeedWebClient") WebClient timefeedClient;
+    private final @Qualifier("timefeedWebClient") WebClient timefeedWebClient;
 
     public Mono<FeedTime> getAggregatorFeed() {
         var feed = new FeedTime();
@@ -31,7 +33,7 @@ public class TimeFeedService {
 
     public Mono<FeedTime> getServerFeed() {
         var path = Path.of(backendConfig.getTimefeedBase(), "timefeed").toString();
-        return timefeedClient.get().uri(path)
+        return timefeedWebClient.get().uri(path)
         .accept(MediaType.APPLICATION_JSON)
         .retrieve()
         .bodyToMono(FeedTime.class);

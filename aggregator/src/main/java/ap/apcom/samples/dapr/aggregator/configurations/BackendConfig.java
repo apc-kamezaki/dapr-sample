@@ -1,4 +1,4 @@
-package ap.apcom.samples.dapr.aggregator;
+package ap.apcom.samples.dapr.aggregator.configurations;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -13,4 +13,7 @@ public class BackendConfig {
     @NotEmpty
     private String timefeedHost;
     private String timefeedBase;
+    @NotEmpty
+    private String orderTopicHost;
+    private String orderTopicBase;
 }

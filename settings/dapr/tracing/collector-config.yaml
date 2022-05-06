@@ -24,6 +24,17 @@ apiVersion: dapr.io/v1alpha1
 kind: Configuration
 metadata:
   name: appconfig
+  namespace: event
+spec:
+  tracing:
+    samplingRate: "1"
+    zipkin:
+      endpointAddress: "http://otel-collector.dapr-system.svc.cluster.local:9411/api/v2/spans"
+---
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: appconfig
   namespace: ingress-system
 spec:
   tracing:
