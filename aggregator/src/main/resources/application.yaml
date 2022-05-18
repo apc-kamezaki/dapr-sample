@@ -6,3 +6,6 @@ backend:
   timefeedBase: ${TIMEFEED_BASE:/}
   orderTopicHost: ${ORDER_TOPIC_HOST:http://localhost:3000}
   orderTopicBase: ${ORDER_TOPIC_BASE:/consumers/simple}
+
+aggregator:
+  titleVersion: ${TITLE_VERSION:}
