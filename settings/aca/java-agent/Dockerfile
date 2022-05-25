@@ -1,0 +1,5 @@
+ARG REGISTRY
+ARG APP_NAME
+ARG APP_IMAGE_VER
+FROM ${REGISTRY}/${APP_NAME}:${APP_IMAGE_VER}
+COPY applicationinsights-agent.jar /javaagent/
